@@ -32,7 +32,7 @@ function generateExportData(valueOfInputData) {
 		if (
 			valueOfInputData[i][3] === 'lifehacker（通常記事）' ||
 			valueOfInputData[i][3] === 'lifehacker（通常記事_業務委託編集費）') {
-			valueOfInputData[i].push(' ');
+			valueOfInputData[i].push('notad');
 			lhListbySpecification.push(valueOfInputData[i]);
 
 		} else if(
@@ -44,7 +44,7 @@ function generateExportData(valueOfInputData) {
 		} else if (
 			valueOfInputData[i][3] === 'GIZMODO（通常記事）' ||
 			valueOfInputData[i][3] === 'GIZMODO（通常記事_業務委託編集費）' ) {
-			valueOfInputData[i].push(' ');
+			valueOfInputData[i].push('notad');
 			gizListbySpecification.push(valueOfInputData[i]);
 
 			} else if (
@@ -55,18 +55,18 @@ function generateExportData(valueOfInputData) {
 
 		} else if (
 			valueOfInputData[i][3] === 'FUZE（通常記事）'){
-			valueOfInputData[i].push(' ');
+			valueOfInputData[i].push('notad');
 			fuzeListbySpecification.push(valueOfInputData[i]);
 
 		} else if( 
 			valueOfInputData[i][3] === 'FUZE（広告記事）') {
-			valueOfInputData[i].push('ad');
+			valueOfInputData[i].push('notad');
 			fuzeListbySpecification.push(valueOfInputData[i]);
 		
 		} else if (
 			valueOfInputData[i][3] === 'MYLOHAS（通常記事）' ||
 			valueOfInputData[i][3] === 'MYLOHAS（通常記事_業務委託編集費）' ) {
-			valueOfInputData[i].push(' ');
+			valueOfInputData[i].push('notad');
 			mlListbySpecification.push(valueOfInputData[i]);
 
 		} else if (
@@ -78,7 +78,7 @@ function generateExportData(valueOfInputData) {
 		} else if (
 			valueOfInputData[i][3] === 'ROOMIE（通常記事）' ||
 			valueOfInputData[i][3] === 'ROOMIE（通常記事_業務委託編集費）' ) {
-			valueOfInputData[i].push(' ');
+			valueOfInputData[i].push('notad');
 			roListbySpecification.push(valueOfInputData[i]);
 
 		} else if(
@@ -90,7 +90,7 @@ function generateExportData(valueOfInputData) {
 		} else if (
 			valueOfInputData[i][3] === 'Business Insider Japan（通常記事）' ||
 			valueOfInputData[i][3] === 'Business Insider Japan（通常記事_業務委託編集費）' ) {
-			valueOfInputData[i].push(' ');
+			valueOfInputData[i].push('notad');
 			biListbySpecification.push(valueOfInputData[i]);
 
 		} else if (
@@ -102,13 +102,13 @@ function generateExportData(valueOfInputData) {
 		} else if (
 			valueOfInputData[i][3] === 'Business Insider Japan（PRIME記事）' ||
 			valueOfInputData[i][3] === 'Business Insider Japan（PRIME記事_業務委託編集費）') {
-			valueOfInputData[i].push(' ');
+			valueOfInputData[i].push('notad');
 			biPrimeListbySpecification.push(valueOfInputData[i]);
 
 		} else if (
 			valueOfInputData[i][3] === 'DIGIDAY（通常記事）' ||
 			valueOfInputData[i][3] === 'DIGIDAY（通常記事_業務委託編集費）' ) {
-			valueOfInputData[i].push(' ');
+			valueOfInputData[i].push('notad');
 			digiListbySpecification.push(valueOfInputData[i]);
 
 		} else if(
@@ -120,13 +120,13 @@ function generateExportData(valueOfInputData) {
 		} else if (
 			valueOfInputData[i][3] === 'eコマース（通常記事/machi-ya案件）' ||
 			valueOfInputData[i][3] === 'eコマース（通常記事/machi-ya案件_業務委託編集費') {
-			valueOfInputData[i].push(' ');
+			valueOfInputData[i].push('notad');
 			ecListbySpecification.push(valueOfInputData[i]);
 
 		} else if (
 			valueOfInputData[i][3] === 'MASHING UP（通常記事）' ||
 			valueOfInputData[i][3] === 'MASHING UP（通常記事_業務委託編集費）' ) {
-			valueOfInputData[i].push(' ');
+			valueOfInputData[i].push('notad');
 			muListbySpecification.push(valueOfInputData[i]);
 
 		} else if (
@@ -137,7 +137,7 @@ function generateExportData(valueOfInputData) {
 
 		} else if (
 			valueOfInputData[i][3] === '6&SENSE') {
-			valueOfInputData[i].push(' ');
+			valueOfInputData[i].push('notad');
 			sixsListbySpecification.push(valueOfInputData[i]);
 		} else {
 			getInputDataSheet().getRange(i+1,1).setBackground("red");
