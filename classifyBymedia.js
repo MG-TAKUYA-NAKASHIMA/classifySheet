@@ -21,7 +21,9 @@ function generateExportData(valueOfInputData) {
 		digiListbySpecification = [],
 		ecListbySpecification = [],
 		muListbySpecification = [],
-		sixsListbySpecification = [];
+		sixsListbySpecification = [],
+		businessGrowhListbySpecification = [],
+		mediaDevelopmentListbySpecification = [];
 
 
 	for (let i = 2; valueOfInputData.length > i; i++) {
@@ -32,115 +34,123 @@ function generateExportData(valueOfInputData) {
 		if (
 			valueOfInputData[i][3] === 'lifehacker（通常記事）' ||
 			valueOfInputData[i][3] === 'lifehacker（通常記事_業務委託編集費）') {
-			valueOfInputData[i].push('notad');
+			valueOfInputData[i].push('通常');
 			lhListbySpecification.push(valueOfInputData[i]);
 
-		} else if(
+		} else if (
 			valueOfInputData[i][3] === 'lifehacker（広告記事）' ||
-			valueOfInputData[i][3] === 'lifehacker（広告記事_業務委託編集費）'){
-			valueOfInputData[i].push('ad');
+			valueOfInputData[i][3] === 'lifehacker（広告記事_業務委託編集費）') {
+			valueOfInputData[i].push('広告');
 			lhListbySpecification.push(valueOfInputData[i]);
-		
+
 		} else if (
 			valueOfInputData[i][3] === 'GIZMODO（通常記事）' ||
-			valueOfInputData[i][3] === 'GIZMODO（通常記事_業務委託編集費）' ) {
-			valueOfInputData[i].push('notad');
+			valueOfInputData[i][3] === 'GIZMODO（通常記事_業務委託編集費）') {
+			valueOfInputData[i].push('通常');
 			gizListbySpecification.push(valueOfInputData[i]);
 
-			} else if (
+		} else if (
 			valueOfInputData[i][3] === 'GIZMODO（広告記事）' ||
 			valueOfInputData[i][3] === 'GIZMODO（広告記事_業務委託編集費）') {
-			valueOfInputData[i].push('ad');
+			valueOfInputData[i].push('広告');
 			gizListbySpecification.push(valueOfInputData[i]);
 
 		} else if (
-			valueOfInputData[i][3] === 'FUZE（通常記事）'){
-			valueOfInputData[i].push('notad');
+			valueOfInputData[i][3] === 'FUZE（通常記事）') {
+			valueOfInputData[i].push('通常');
 			fuzeListbySpecification.push(valueOfInputData[i]);
 
-		} else if( 
+		} else if (
 			valueOfInputData[i][3] === 'FUZE（広告記事）') {
-			valueOfInputData[i].push('notad');
+			valueOfInputData[i].push('広告');
 			fuzeListbySpecification.push(valueOfInputData[i]);
-		
+
 		} else if (
 			valueOfInputData[i][3] === 'MYLOHAS（通常記事）' ||
-			valueOfInputData[i][3] === 'MYLOHAS（通常記事_業務委託編集費）' ) {
-			valueOfInputData[i].push('notad');
+			valueOfInputData[i][3] === 'MYLOHAS（通常記事_業務委託編集費）') {
+			valueOfInputData[i].push('通常');
 			mlListbySpecification.push(valueOfInputData[i]);
 
 		} else if (
 			valueOfInputData[i][3] === 'MYLOHAS（広告記事）' ||
 			valueOfInputData[i][3] === 'MYLOHAS（広告記事_業務委託編集費）') {
-			valueOfInputData[i].push('ad');
+			valueOfInputData[i].push('広告');
 			mlListbySpecification.push(valueOfInputData[i]);
-	
+
 		} else if (
 			valueOfInputData[i][3] === 'ROOMIE（通常記事）' ||
-			valueOfInputData[i][3] === 'ROOMIE（通常記事_業務委託編集費）' ) {
-			valueOfInputData[i].push('notad');
+			valueOfInputData[i][3] === 'ROOMIE（通常記事_業務委託編集費）') {
+			valueOfInputData[i].push('通常');
 			roListbySpecification.push(valueOfInputData[i]);
 
-		} else if(
+		} else if (
 			valueOfInputData[i][3] === 'ROOMIE（広告記事）' ||
 			valueOfInputData[i][3] === 'ROOMIE（広告記事_業務委託編集費）') {
-			valueOfInputData[i].push('ad');
+			valueOfInputData[i].push('広告');
 			roListbySpecification.push(valueOfInputData[i]);
 
 		} else if (
 			valueOfInputData[i][3] === 'Business Insider Japan（通常記事）' ||
-			valueOfInputData[i][3] === 'Business Insider Japan（通常記事_業務委託編集費）' ) {
-			valueOfInputData[i].push('notad');
+			valueOfInputData[i][3] === 'Business Insider Japan（通常記事_業務委託編集費）') {
+			valueOfInputData[i].push('通常');
 			biListbySpecification.push(valueOfInputData[i]);
 
 		} else if (
 			valueOfInputData[i][3] === 'Business Insider Japan（広告記事）' ||
 			valueOfInputData[i][3] === 'Business Insider Japan（広告記事_業務委託編集費）') {
-			valueOfInputData[i].push('ad');
+			valueOfInputData[i].push('広告');
 			biListbySpecification.push(valueOfInputData[i]);
 
 		} else if (
 			valueOfInputData[i][3] === 'Business Insider Japan（PRIME記事）' ||
 			valueOfInputData[i][3] === 'Business Insider Japan（PRIME記事_業務委託編集費）') {
-			valueOfInputData[i].push('notad');
+			valueOfInputData[i].push('Prime');
 			biPrimeListbySpecification.push(valueOfInputData[i]);
 
 		} else if (
 			valueOfInputData[i][3] === 'DIGIDAY（通常記事）' ||
-			valueOfInputData[i][3] === 'DIGIDAY（通常記事_業務委託編集費）' ) {
-			valueOfInputData[i].push('notad');
+			valueOfInputData[i][3] === 'DIGIDAY（通常記事_業務委託編集費）') {
+			valueOfInputData[i].push('通常');
 			digiListbySpecification.push(valueOfInputData[i]);
 
-		} else if(
+		} else if (
 			valueOfInputData[i][3] === 'DIGIDAY（広告記事）' ||
 			valueOfInputData[i][3] === 'DIGIDAY（広告記事_業務委託編集費）') {
-			valueOfInputData[i].push('ad');
+			valueOfInputData[i].push('広告');
 			digiListbySpecification.push(valueOfInputData[i]);
 
 		} else if (
 			valueOfInputData[i][3] === 'eコマース（通常記事/machi-ya案件）' ||
 			valueOfInputData[i][3] === 'eコマース（通常記事/machi-ya案件_業務委託編集費') {
-			valueOfInputData[i].push('notad');
+			valueOfInputData[i].push('通常');
 			ecListbySpecification.push(valueOfInputData[i]);
 
 		} else if (
 			valueOfInputData[i][3] === 'MASHING UP（通常記事）' ||
-			valueOfInputData[i][3] === 'MASHING UP（通常記事_業務委託編集費）' ) {
-			valueOfInputData[i].push('notad');
+			valueOfInputData[i][3] === 'MASHING UP（通常記事_業務委託編集費）') {
+			valueOfInputData[i].push('通常');
 			muListbySpecification.push(valueOfInputData[i]);
 
 		} else if (
 			valueOfInputData[i][3] === 'MASHING UP（広告）' ||
 			valueOfInputData[i][3] === 'MASHING UP（広告記事_業務委託編集費）') {
-			valueOfInputData[i].push('ad');
+			valueOfInputData[i].push('広告');
 			muListbySpecification.push(valueOfInputData[i]);
 
 		} else if (
 			valueOfInputData[i][3] === '6&SENSE') {
 			valueOfInputData[i].push('notad');
 			sixsListbySpecification.push(valueOfInputData[i]);
+		} else if (
+			valueOfInputData[i][3] === '事業推進部門メディア開発ユニット') {
+			valueOfInputData[i].push('notad');
+			mediaDevelopmentListbySpecification.push(valueOfInputData[i]);
+		} else if (
+			valueOfInputData[i][3] === '事業推進部門ビジネスグロースユニット') {
+			valueOfInputData[i].push('notad');
+			businessGrowhListbySpecification.push(valueOfInputData[i]);
 		} else {
-			getInputDataSheet().getRange(i+1,1).setBackground("red");
+			getInputDataSheet().getRange(i + 1, 1).setBackground("red");
 		}
 	}
 	return {
@@ -154,7 +164,9 @@ function generateExportData(valueOfInputData) {
 		'8': digiListbySpecification,
 		'9': ecListbySpecification,
 		'10': muListbySpecification,
-		'11': sixsListbySpecification
+		'11': sixsListbySpecification,
+		'12': businessGrowhListbySpecification,
+		'13': mediaDevelopmentListbySpecification
 	}
 }
 
@@ -171,6 +183,8 @@ function callSheets() {
 	const ecSheet = getEcSheet();
 	const muSheet = getMuSheet();
 	const sixsSheet = getSixsSheet();
+	const businessGrowhSheet = getBusinessGrowhSheet();
+	const mediaDevelopmentSheet = getMediaDevelopmentSheet();
 	return {
 		'1': lhSheet,
 		'2': gizSheet,
@@ -182,7 +196,9 @@ function callSheets() {
 		'8': digiSheet,
 		'9': ecSheet,
 		'10': muSheet,
-		'11': sixsSheet
+		'11': sixsSheet,
+		'12': businessGrowhSheet,
+		'13': mediaDevelopmentSheet
 	}
 }
 
