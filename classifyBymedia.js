@@ -4,6 +4,7 @@ function classifyTriger() {
 	const valueOfInputData = getInputData();
 	const listByMedia = generateExportData(valueOfInputData);
 	organizeList(sheetByMedia, listByMedia);
+	getEroorCell();
 }
 
 function deleteData(sheetByMedia) {
@@ -224,4 +225,23 @@ function organizeList(sheetByMedia, listByMedia) {
 
 function exportListByMedia(exportToSheet, exportData) {
 	exportToSheet.getRange(2, 1, exportData.length, 43).setValues(exportData);
+}
+
+function getEroorCell() {
+	const inputDataSheet = getInputDataSheet();
+	let lastRow          = inputDataSheet.getLastRow();
+	let colorArr         = inputDataSheet.getRange(`A3:A${lastRow}`).getBackgrounds();
+	let tmp = 0;
+
+	Object.keys(colorArr).forEach(function (i) {
+		if(colorArr[i] == '#ff0000'){
+			tmp++;
+		}
+});
+	exportEroorCellCount(tmp);
+}
+
+function exportEroorCellCount(tmp) {
+	const inputDataSheet = getInputDataSheet();
+	inputDataSheet.getRange(1,5).setValue(tmp);
 }
