@@ -1,28 +1,66 @@
+//「媒体ごとに分ける」をクリックしたら発動する
 function classifyTriger() {
-	const sheetByMedia = callSheets();
-	deleteData(sheetByMedia);
-	const valueOfInputData = getInputData();
-	const listByMedia = generateExportData(valueOfInputData);
-	organizeList(sheetByMedia, listByMedia);
-	getEroorCell();
+	const sheetByMedia = callSheets();//シートを取得する
+	deleteData(sheetByMedia);//以前のデータを削除する
+	const valueOfInputData = getInputData();//データを取得する
+	const listByMedia = generateExportData(valueOfInputData);//各媒体ごとにデータを分ける
+	organizeList(sheetByMedia, listByMedia);//書き込む先のシートと書き込むデータを組み合わせて、書き込み用の関数に渡す
+	getEroorCell();//転記漏れ件数を検知する
 }
 
-function deleteData(sheetByMedia) {
-	let lastRow;
-
-	for (let i = 1; Object.keys(sheetByMedia).length > i; i++) {
-		lastRow =  sheetByMedia[i].getLastRow();
-		sheetByMedia[i].getRange(2,1,lastRow,44).clear();
+//媒体ごとのシートを呼ぶ
+function callSheets() {
+	const lhSheet = getLhSheet();//請求書（明細別）_lifehackerのシートを取得している
+	const gizSheet = getGizSheet();//請求書（明細別）_GIZMODOのシートを取得している
+	const fuzeSheet = getFuzeSheet();//請求書（明細別）_FUZEのシートを取得している
+	const mlSheet = getMlSheet();//請求書（明細別）_MYLOHASのシートを取得している
+	const roSheet = getRoSheet();//請求書（明細別）_ROOMIEのシートを取得している
+	const biSheet = getBiSheet();//請求書（明細別）_Business Insider Japanのシートを取得している
+	const biPrimeSheet = getBiPrimeSheet();//請求書（明細別）_Business Insider Japan（PRIME記事）のシートを取得している
+	const digiSheet = getDigiSheet();//請求書（明細別）_DIGIDAYのシートを取得している
+	const ecSheet = getEcSheet();//請求書（明細別）_ecのシートを取得している
+	const muSheet = getMuSheet();//請求書（明細別）_MASHING UPのシートを取得している
+	const sixsSheet = getSixsSheet();//請求書（明細別）_6&SENSEのシートを取得している
+	const businessGrowhSheet = getBusinessGrowhSheet();//請求書（明細別）_メディアグロースユニットのシートを取得している
+	const mediaDevelopmentSheet = getMediaDevelopmentSheet();//請求書（明細別）_メディア開発ユニットのシートを取得している
+	return {
+		'1': lhSheet,
+		'2': gizSheet,
+		'3': fuzeSheet,
+		'4': mlSheet,
+		'5': roSheet,
+		'6': biSheet,
+		'7': biPrimeSheet,
+		'8': digiSheet,
+		'9': ecSheet,
+		'10': muSheet,
+		'11': sixsSheet,
+		'12': businessGrowhSheet,
+		'13': mediaDevelopmentSheet
 	}
 }
 
-function getInputData() {
-	const inputDataSheet = getInputDataSheet();
-	const valueOfInputData = inputDataSheet.getDataRange().getValues();
-	inputDataSheet.getRange(3,1,inputDataSheet.getLastRow(),1).setBackground(null);
-	return valueOfInputData;
+//媒体ごとのシートに転記する前に以前のデータを削除する
+function deleteData(sheetByMedia) {
+	let lastRow;//各媒体シートの最終行を格納するための変数
+
+	for (let i = 1; Object.keys(sheetByMedia).length > i; i++) {//シートの数だけ
+		lastRow =  sheetByMedia[i].getLastRow();//各シートの最終行を取得
+		sheetByMedia[i].getRange(2,1,lastRow,44).clear();//各シートの見出し行を除いたデータを削除
+	}
 }
 
+
+//「請求書(明細別)」に入力されているデータを取得する
+function getInputData() {
+	const inputDataSheet = getInputDataSheet(),//「請求書(明細別)」シートを特定
+	valueOfInputData = inputDataSheet.getDataRange().getValues();//「請求書(明細別)」シートの全データを取得
+	inputDataSheet.getRange(3,1,inputDataSheet.getLastRow(),1).setBackground(null);//A列のセルの色をnull(なし)にする(A列が赤色の場合があるため)
+	return valueOfInputData;//
+}
+
+//各媒体ごとにデータを分ける
+//各媒体データを格納するために配列を用意する
 function generateExportData(valueOfInputData) {
 	let lhListbySpecification = [],
 		gizListbySpecification = [],
@@ -40,8 +78,8 @@ function generateExportData(valueOfInputData) {
 
 
 		for (let i = 2; valueOfInputData.length > i; i++) {
-			if (valueOfInputData[i][3] === '-') {
-				valueOfInputData[i][3] = valueOfInputData[i - 1][3];
+			if (valueOfInputData[i][3] === '-') {//プロジェクト名が「-」の場合は
+				valueOfInputData[i][3] = valueOfInputData[i - 1][3];//前行のデータを補完する
 			}
 	
 			if (
@@ -183,38 +221,7 @@ function generateExportData(valueOfInputData) {
 	}
 }
 
-
-function callSheets() {
-	const lhSheet = getLhSheet();
-	const gizSheet = getGizSheet();
-	const fuzeSheet = getFuzeSheet();
-	const mlSheet = getMlSheet();
-	const roSheet = getRoSheet();
-	const biSheet = getBiSheet();
-	const biPrimeSheet = getBiPrimeSheet();
-	const digiSheet = getDigiSheet();
-	const ecSheet = getEcSheet();
-	const muSheet = getMuSheet();
-	const sixsSheet = getSixsSheet();
-	const businessGrowhSheet = getBusinessGrowhSheet();
-	const mediaDevelopmentSheet = getMediaDevelopmentSheet();
-	return {
-		'1': lhSheet,
-		'2': gizSheet,
-		'3': fuzeSheet,
-		'4': mlSheet,
-		'5': roSheet,
-		'6': biSheet,
-		'7': biPrimeSheet,
-		'8': digiSheet,
-		'9': ecSheet,
-		'10': muSheet,
-		'11': sixsSheet,
-		'12': businessGrowhSheet,
-		'13': mediaDevelopmentSheet
-	}
-}
-
+//シート情報と書き込むデータの組み合わせ、書き込み用の関数に送る
 function organizeList(sheetByMedia, listByMedia) {
 	for (let i = 1; Object.keys(listByMedia).length >= i; i++) {
 		if (listByMedia[i].length !== 0) {
@@ -223,25 +230,29 @@ function organizeList(sheetByMedia, listByMedia) {
 	}
 }
 
+//各シートに書き込む
 function exportListByMedia(exportToSheet, exportData) {
 	exportToSheet.getRange(2, 1, exportData.length, 43).setValues(exportData);
 }
 
-function getEroorCell() {
-	const inputDataSheet = getInputDataSheet();
-	let lastRow          = inputDataSheet.getLastRow();
-	let colorArr         = inputDataSheet.getRange(`A3:A${lastRow}`).getBackgrounds();
-	let tmp = 0;
 
-	Object.keys(colorArr).forEach(function (i) {
-		if(colorArr[i] == '#ff0000'){
-			tmp++;
+//転記漏れ件数を検知する
+function getEroorCell() {
+	const inputDataSheet = getInputDataSheet();//「請求書(明細別)」シートを取得
+	let lastRow          = inputDataSheet.getLastRow(),//「請求書(明細別)」シートのデータが入っている最終行を取得
+	colorArr             = inputDataSheet.getRange(`A3:A${lastRow}`).getBackgrounds(),//「請求書(明細別)」シートのA3からA(最終行)セルの色情報を取得する
+	errorCellCount       = 0;//転記漏れの件数をカウントする用の変数
+
+	Object.keys(colorArr).forEach(i => {
+		if(colorArr[i] == '#ff0000'){//赤色があれば
+			errorCellCount++;//error件数を1プラスする
 		}
 });
-	exportEroorCellCount(tmp);
+	exportEroorCellCount(errorCellCount);//errorCellCountをexportEroorCellCountに渡している
 }
 
-function exportEroorCellCount(tmp) {
-	const inputDataSheet = getInputDataSheet();
-	inputDataSheet.getRange(1,5).setValue(tmp);
+//転記漏れ件数を「請求書(明細別)」シートのE1セルに出力する
+function exportEroorCellCount(errorCellCount) {
+	const inputDataSheet = getInputDataSheet();//「請求書(明細別)」シートを取得
+	inputDataSheet.getRange(1,5).setValue(errorCellCount);//転記漏れ件数を「請求書(明細別)」のE1セルに出力する
 }
