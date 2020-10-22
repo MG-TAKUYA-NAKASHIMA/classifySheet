@@ -1,28 +1,28 @@
-//「媒体ごとに分ける」をクリックしたら発動する
+//「媒体ごとに分ける」をクリックしたら発動
 function classifyTriger() {
-	const sheetByMedia = callSheets();//シートを取得する
-	deleteData(sheetByMedia);//以前のデータを削除する
-	const valueOfInputData = getInputData();//データを取得する
+	const sheetByMedia = callSheets();//シートを取得
+	deleteData(sheetByMedia);//以前のデータを削除
+	const valueOfInputData = getInputData();//データを取得
 	const listByMedia = generateExportData(valueOfInputData);//各媒体ごとにデータを分ける
 	organizeList(sheetByMedia, listByMedia);//書き込む先のシートと書き込むデータを組み合わせて、書き込み用の関数に渡す
-	getEroorCell();//転記漏れ件数を検知する
+	getEroorCell();//転記漏れ件数を検知
 }
 
 //媒体ごとのシートを呼ぶ
 function callSheets() {
-	const lhSheet = getLhSheet();//請求書（明細別）_lifehackerのシートを取得している
-	const gizSheet = getGizSheet();//請求書（明細別）_GIZMODOのシートを取得している
-	const fuzeSheet = getFuzeSheet();//請求書（明細別）_FUZEのシートを取得している
-	const mlSheet = getMlSheet();//請求書（明細別）_MYLOHASのシートを取得している
-	const roSheet = getRoSheet();//請求書（明細別）_ROOMIEのシートを取得している
-	const biSheet = getBiSheet();//請求書（明細別）_Business Insider Japanのシートを取得している
-	const biPrimeSheet = getBiPrimeSheet();//請求書（明細別）_Business Insider Japan（PRIME記事）のシートを取得している
-	const digiSheet = getDigiSheet();//請求書（明細別）_DIGIDAYのシートを取得している
-	const ecSheet = getEcSheet();//請求書（明細別）_ecのシートを取得している
-	const muSheet = getMuSheet();//請求書（明細別）_MASHING UPのシートを取得している
-	const sixsSheet = getSixsSheet();//請求書（明細別）_6&SENSEのシートを取得している
-	const businessGrowhSheet = getBusinessGrowhSheet();//請求書（明細別）_メディアグロースユニットのシートを取得している
-	const mediaDevelopmentSheet = getMediaDevelopmentSheet();//請求書（明細別）_メディア開発ユニットのシートを取得している
+	const lhSheet = getLhSheet();//請求書（明細別）_lifehackerのシートを取得
+	const gizSheet = getGizSheet();//請求書（明細別）_GIZMODOのシートを取得
+	const fuzeSheet = getFuzeSheet();//請求書（明細別）_FUZEのシートを取得
+	const mlSheet = getMlSheet();//請求書（明細別）_MYLOHASのシートを取得
+	const roSheet = getRoSheet();//請求書（明細別）_ROOMIEのシートを取得
+	const biSheet = getBiSheet();//請求書（明細別）_Business Insider Japanのシートを取得
+	const biPrimeSheet = getBiPrimeSheet();//請求書（明細別）_Business Insider Japan（PRIME記事）のシートを取得
+	const digiSheet = getDigiSheet();//請求書（明細別）_DIGIDAYのシートを取得
+	const ecSheet = getEcSheet();//請求書（明細別）_ecのシートを取得
+	const muSheet = getMuSheet();//請求書（明細別）_MASHING UPのシートを取得
+	const sixsSheet = getSixsSheet();//請求書（明細別）_6&SENSEのシートを取得
+	const businessGrowhSheet = getBusinessGrowhSheet();//請求書（明細別）_メディアグロースユニットのシートを取得
+	const mediaDevelopmentSheet = getMediaDevelopmentSheet();//請求書（明細別）_メディア開発ユニットのシートを取得
 	return {
 		'1': lhSheet,
 		'2': gizSheet,
@@ -36,7 +36,7 @@ function callSheets() {
 		'10': muSheet,
 		'11': sixsSheet,
 		'12': businessGrowhSheet,
-		'13': mediaDevelopmentSheet
+		'13': mediaDevelopmentSheet	
 	}
 }
 
@@ -79,7 +79,7 @@ function generateExportData(valueOfInputData) {
 
 		for (let i = 2; valueOfInputData.length > i; i++) {
 			if (valueOfInputData[i][3] === '-') {//プロジェクト名が「-」の場合は
-				valueOfInputData[i][3] = valueOfInputData[i - 1][3];//前行のデータを補完する
+				valueOfInputData[i][3] = valueOfInputData[i - 1][3];//前行のデータを補完
 			}
 	
 			if (
@@ -236,11 +236,11 @@ function exportListByMedia(exportToSheet, exportData) {
 }
 
 
-//転記漏れ件数を検知する
+//転記漏れ件数を検知
 function getEroorCell() {
 	const inputDataSheet = getInputDataSheet();//「請求書(明細別)」シートを取得
 	let lastRow          = inputDataSheet.getLastRow(),//「請求書(明細別)」シートのデータが入っている最終行を取得
-	colorArr             = inputDataSheet.getRange(`A3:A${lastRow}`).getBackgrounds(),//「請求書(明細別)」シートのA3からA(最終行)セルの色情報を取得する
+	colorArr             = inputDataSheet.getRange(`A3:A${lastRow}`).getBackgrounds(),//「請求書(明細別)」シートのA3からA(最終行)セルの色情報を取得
 	errorCellCount       = 0;//転記漏れの件数をカウントする用の変数
 
 	Object.keys(colorArr).forEach(i => {
@@ -248,11 +248,11 @@ function getEroorCell() {
 			errorCellCount++;//error件数を1プラスする
 		}
 });
-	exportEroorCellCount(errorCellCount);//errorCellCountをexportEroorCellCountに渡している
+	exportEroorCellCount(errorCellCount);//errorCellCountをexportEroorCellCountに渡す
 }
 
-//転記漏れ件数を「請求書(明細別)」シートのE1セルに出力する
+//転記漏れ件数を「請求書(明細別)」シートのE1セルに出力
 function exportEroorCellCount(errorCellCount) {
 	const inputDataSheet = getInputDataSheet();//「請求書(明細別)」シートを取得
-	inputDataSheet.getRange(1,5).setValue(errorCellCount);//転記漏れ件数を「請求書(明細別)」のE1セルに出力する
+	inputDataSheet.getRange(1,5).setValue(errorCellCount);//転記漏れ件数を「請求書(明細別)」のE1セルに出力
 }
