@@ -1,28 +1,28 @@
 //「媒体ごとに分ける」をクリックしたら発動
 function classifyTriger() {
-	const sheetByMedia = callSheets();//シートを取得
+	const sheetByMedia = callSheets();//シートを特定
 	deleteData(sheetByMedia);//以前のデータを削除
-	const valueOfInputData = getInputData();//データを取得
-	const listByMedia = generateExportData(valueOfInputData);//各媒体ごとにデータを分ける
+	const valueOfInputData = getInputData(),//データを取得
+	listByMedia = generateExportData(valueOfInputData);//各媒体ごとにデータを分ける
 	organizeList(sheetByMedia, listByMedia);//書き込む先のシートと書き込むデータを組み合わせて、書き込み用の関数に渡す
 	getEroorCell();//転記漏れ件数を検知
 }
 
 //媒体ごとのシートを呼ぶ
 function callSheets() {
-	const lhSheet = getLhSheet();//請求書（明細別）_lifehackerのシートを取得
-	const gizSheet = getGizSheet();//請求書（明細別）_GIZMODOのシートを取得
-	const fuzeSheet = getFuzeSheet();//請求書（明細別）_FUZEのシートを取得
-	const mlSheet = getMlSheet();//請求書（明細別）_MYLOHASのシートを取得
-	const roSheet = getRoSheet();//請求書（明細別）_ROOMIEのシートを取得
-	const biSheet = getBiSheet();//請求書（明細別）_Business Insider Japanのシートを取得
-	const biPrimeSheet = getBiPrimeSheet();//請求書（明細別）_Business Insider Japan（PRIME記事）のシートを取得
-	const digiSheet = getDigiSheet();//請求書（明細別）_DIGIDAYのシートを取得
-	const ecSheet = getEcSheet();//請求書（明細別）_ecのシートを取得
-	const muSheet = getMuSheet();//請求書（明細別）_MASHING UPのシートを取得
-	const sixsSheet = getSixsSheet();//請求書（明細別）_6&SENSEのシートを取得
-	const businessGrowhSheet = getBusinessGrowhSheet();//請求書（明細別）_メディアグロースユニットのシートを取得
-	const mediaDevelopmentSheet = getMediaDevelopmentSheet();//請求書（明細別）_メディア開発ユニットのシートを取得
+	const lhSheet = getLhSheet(),//請求書（明細別）_lifehackerのシートを取得
+	gizSheet = getGizSheet(),//請求書（明細別）_GIZMODOのシートを取得
+	fuzeSheet = getFuzeSheet(),//請求書（明細別）_FUZEのシートを取得
+	mlSheet = getMlSheet(),//請求書（明細別）_MYLOHASのシートを取得
+	roSheet = getRoSheet(),//請求書（明細別）_ROOMIEのシートを取得
+	biSheet = getBiSheet(),//請求書（明細別）_Business Insider Japanのシートを取得
+	biPrimeSheet = getBiPrimeSheet(),//請求書（明細別）_Business Insider Japan（PRIME記事）のシートを取得
+	digiSheet = getDigiSheet(),//請求書（明細別）_DIGIDAYのシートを取得
+	ecSheet = getEcSheet(),//請求書（明細別）_ecのシートを取得
+	muSheet = getMuSheet(),//請求書（明細別）_MASHING UPのシートを取得
+	sixsSheet = getSixsSheet(),//請求書（明細別）_6&SENSEのシートを取得
+	businessGrowhSheet = getBusinessGrowhSheet(),//請求書（明細別）_メディアグロースユニットのシートを取得
+	mediaDevelopmentSheet = getMediaDevelopmentSheet();//請求書（明細別）_メディア開発ユニットのシートを取得
 	return {
 		'1': lhSheet,
 		'2': gizSheet,
@@ -238,7 +238,7 @@ function exportListByMedia(exportToSheet, exportData) {
 
 //転記漏れ件数を検知
 function getEroorCell() {
-	const inputDataSheet = getInputDataSheet();//「請求書(明細別)」シートを取得
+	const inputDataSheet = getInputDataSheet();//「請求書(明細別)」シートを特定
 	let lastRow          = inputDataSheet.getLastRow(),//「請求書(明細別)」シートのデータが入っている最終行を取得
 	colorArr             = inputDataSheet.getRange(`A3:A${lastRow}`).getBackgrounds(),//「請求書(明細別)」シートのA3からA(最終行)セルの色情報を取得
 	errorCellCount       = 0;//転記漏れの件数をカウントする用の変数
