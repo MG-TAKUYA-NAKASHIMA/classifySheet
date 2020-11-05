@@ -190,15 +190,15 @@ function generateExportData(valueOfInputData) {
 	
 			} else if (
 				valueOfInputData[i][3] === '6&SENSE') {
-				valueOfInputData[i].push('notad');
+				valueOfInputData[i].push('通常');
 				sixsListbySpecification.push(valueOfInputData[i]);
 			} else if (
 				valueOfInputData[i][3] === 'プロダクト部門/メディア開発ユニット') {
-				valueOfInputData[i].push('notad');
+				valueOfInputData[i].push('通常');
 				mediaDevelopmentListbySpecification.push(valueOfInputData[i]);
 			} else if (
 				valueOfInputData[i][3] === 'プロダクト部門/メディアグロースユニット') {
-				valueOfInputData[i].push('notad');
+				valueOfInputData[i].push('通常');
 				businessGrowhListbySpecification.push(valueOfInputData[i]);
 			} else {
 				getInputDataSheet().getRange(i + 1, 1).setBackground("red");
