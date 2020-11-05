@@ -10,19 +10,19 @@ function classifyTriger() {
 
 //媒体ごとのシートを呼ぶ
 function callSheets() {
-	const lhSheet = getLhSheet(),//請求書（明細別）_lifehackerのシートを取得
-	gizSheet = getGizSheet(),//請求書（明細別）_GIZMODOのシートを取得
-	fuzeSheet = getFuzeSheet(),//請求書（明細別）_FUZEのシートを取得
-	mlSheet = getMlSheet(),//請求書（明細別）_MYLOHASのシートを取得
-	roSheet = getRoSheet(),//請求書（明細別）_ROOMIEのシートを取得
-	biSheet = getBiSheet(),//請求書（明細別）_Business Insider Japanのシートを取得
-	biPrimeSheet = getBiPrimeSheet(),//請求書（明細別）_Business Insider Japan（PRIME記事）のシートを取得
-	digiSheet = getDigiSheet(),//請求書（明細別）_DIGIDAYのシートを取得
-	ecSheet = getEcSheet(),//請求書（明細別）_ecのシートを取得
-	muSheet = getMuSheet(),//請求書（明細別）_MASHING UPのシートを取得
-	sixsSheet = getSixsSheet(),//請求書（明細別）_6&SENSEのシートを取得
-	businessGrowhSheet = getBusinessGrowhSheet(),//請求書（明細別）_メディアグロースユニットのシートを取得
-	mediaDevelopmentSheet = getMediaDevelopmentSheet();//請求書（明細別）_メディア開発ユニットのシートを取得
+	const lhSheet = getLhSheet(),//請求書（明細別）_lifehackerのシートを特定
+	gizSheet = getGizSheet(),//請求書（明細別）_GIZMODOのシートを特定
+	fuzeSheet = getFuzeSheet(),//請求書（明細別）_FUZEのシートを特定
+	mlSheet = getMlSheet(),//請求書（明細別）_MYLOHASのシートを特定
+	roSheet = getRoSheet(),//請求書（明細別）_ROOMIEのシートを特定
+	biSheet = getBiSheet(),//請求書（明細別）_Business Insider Japanのシートを特定
+	biPrimeSheet = getBiPrimeSheet(),//請求書（明細別）_Business Insider Japan（PRIME記事）のシートを特定
+	digiSheet = getDigiSheet(),//請求書（明細別）_DIGIDAYのシートを特定
+	ecSheet = getEcSheet(),//請求書（明細別）_ecのシートを特定
+	muSheet = getMuSheet(),//請求書（明細別）_MASHING UPのシートを特定
+	sixsSheet = getSixsSheet(),//請求書（明細別）_6&SENSEのシートを特定
+	businessGrowhSheet = getBusinessGrowhSheet(),//請求書（明細別）_メディアグロースユニットのシートを特定
+	mediaDevelopmentSheet = getMediaDevelopmentSheet();//請求書（明細別）_メディア開発ユニットのシートを特定
 	return {
 		'1': lhSheet,
 		'2': gizSheet,
