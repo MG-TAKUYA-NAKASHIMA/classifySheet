@@ -235,7 +235,6 @@ function exportListByMedia(exportToSheet, exportData) {
 	exportToSheet.getRange(2, 1, exportData.length, 43).setValues(exportData);
 }
 
-
 //転記漏れ件数を検知
 function getEroorCell() {
 	const inputDataSheet = getInputDataSheet();//「請求書(明細別)」シートを特定
